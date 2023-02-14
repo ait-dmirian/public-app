@@ -10,9 +10,9 @@ jobs:
       - name: check_remote
         run: |
           ls -la && pwd 
-          # response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge
-          # echo $response
-          # [ "$response" -eq 204 ]
-          # echo $?
+          response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge)
+          echo $response
+          [ "$response" -eq 204 ]
+          echo $?
 
 ##
