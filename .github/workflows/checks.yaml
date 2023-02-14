@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check_remote
-        run: | 
+        run: |
+          ll 
           response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge
           echo $response
           [ "$response" -eq 204 ]
