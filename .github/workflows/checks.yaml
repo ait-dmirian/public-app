@@ -5,9 +5,10 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: check_remote
         run: |
-          ll 
+          ls -la && pwd 
           response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge
           echo $response
           [ "$response" -eq 204 ]
