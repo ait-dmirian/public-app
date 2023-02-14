@@ -5,13 +5,19 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      #- name: checkout code
-      #  uses: actions/checkout@v2
+      - name: checkout remote repo test
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          repository: ait-dmirian/public-test
+            #path: './bar'
       - name: check_remote
         run: |
           ls -la && pwd 
           response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/7/merge)
           echo $response
           if [ "$response" != 204 ]; then exit 1; fi
+
+          gh pr list
 
 ##
