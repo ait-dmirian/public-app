@@ -22,7 +22,8 @@ jobs:
           #if [ "$?" != 0 ]; then exit 1; fi
           echo ${GITHUB_REF_NAME}
           #echo ${GITHUB_REPOSITORY}
-          curl -s https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_REF_NAME} | grep "ait-dmirian:"${GITHUB_REF_NAME}
+          echo curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_REF_NAME}"
+          curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_REF_NAME}" | grep "ait-dmirian:"${GITHUB_REF_NAME}
 
 
           
