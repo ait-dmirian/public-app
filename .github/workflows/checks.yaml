@@ -15,16 +15,21 @@ jobs:
       #       #path: './bar'
       - name: check_remote
         run: |
-          # ls -la && pwd 
+          pwd
+          echo ${{GITHUB_HEAD_REF}}
           # response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge)
           # echo $response
           # if [ "$response" != 204 ]; then exit 1; fi
           # #gh pr list
-          curl -s 'https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_HEAD_REF}'
+          curl -s 'https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${{GITHUB_HEAD_REF}}'
           curl -s 'https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_HEAD_REF}' | grep "ait-dmirian:${GITHUB_HEAD_REF}"
           #if [ "$?" != 0 ]; then exit 1; fi
           echo ${GITHUB_HEAD_REF}
           echo ${GITHUB_REF_NAME}
           echo ${GITHUB_REPOSITORY}
-          echo ${GITHUB_REPOSITORY_OWNER}
+          echo ${GITHUB_REPOSITORY_OWNER} 
+          echo ${{GITHUB_HEAD_REF}}
+          echo ${{GITHUB_REF_NAME}}
+          echo ${{GITHUB_REPOSITORY}}
+          echo ${{GITHUB_REPOSITORY_OWNER}}
         
