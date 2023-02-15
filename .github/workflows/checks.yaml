@@ -23,6 +23,6 @@ jobs:
           #echo ${GITHUB_REF_NAME}
           #echo ${GITHUB_REPOSITORY}
           #echo curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_REF_NAME}"
-          result=$(curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_REF_NAME}" | grep "ait-dmirian:${GITHUB_REF_NAME}") 
+          result=$(curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirians:${GITHUB_REF_NAME}" | grep "ait-dmirian:${GITHUB_REF_NAME}") 
           # If result is not empty echo it, otherwise exit with error and fail job 
           [[ ! -z "$result" ]] && echo $result || exit 1           
