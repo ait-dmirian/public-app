@@ -1,7 +1,7 @@
 name: status_check
 on: 
   pull_request:
-    brnaches: [main]
+    branches: [main]
 
 jobs:
   check:
