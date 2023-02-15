@@ -1,3 +1,1 @@
-# public-app
-yes
-1
+# public-app  
