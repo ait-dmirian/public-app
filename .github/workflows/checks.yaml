@@ -5,18 +5,21 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout remote repo test
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-          repository: ait-dmirian/public-test
-            #path: './bar'
+      # - name: checkout remote repo test
+      #   uses: actions/checkout@v2
+      #   with:
+      #     fetch-depth: 0
+      #     repository: ait-dmirian/public-test
+      #       #path: './bar'
       - name: check_remote
         run: |
-          ls -la && pwd 
-          response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge)
-          echo $response
-          if [ "$response" != 204 ]; then exit 1; fi
-          #gh pr list
-
-##
+          # ls -la && pwd 
+          # response=$(curl --write-out '%{http_code}' --silent --output /dev/null https://api.github.com/repos/ait-dmirian/public-test/pulls/2/merge)
+          # echo $response
+          # if [ "$response" != 204 ]; then exit 1; fi
+          # #gh pr list
+          #curl -s 'https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:ait-dmirian-patch-3' | grep "ait-dmirian:ait-dmirian-patch-3"
+          #if [ "$?" != 0 ]; then exit 1; fi
+          echo ${GITHUB_HEAD_REF}
+          echo ${GITHUB_REF_NAME}
+          echo ${GITHUB_REPOSITORY}
