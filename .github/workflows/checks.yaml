@@ -20,7 +20,9 @@ jobs:
           echo ${GITHUB_REF_NAME}
           echo ${GITHUB_REPOSITORY}
           echo ${GITHUB_REPOSITORY_OWNER} 
-          curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=any&head=ait-dmirian:${GITHUB_HEAD_REF}" > result.txt
+          echo "GITHUB_HEAD_REF = ${GITHUB_HEAD_REF}"
+          curl -s "https://api.github.com/repos/ait-dmirian/public-test/pulls?base=main&state=all&head=ait-dmirian:${GITHUB_HEAD_REF}" > result.txt
           pr_name=$(grep "ait-dmirian:${GITHUB_HEAD_REF}" result.txt)
-          if [ "$pr_name" ]; then echo "$pr_name"; else echo "There is no PR for ait-dmirian:${GITHUB_HEAD_REF}" && exit 1;  fi          
-        
+          echo "Echo: $pr_name"
+          grep "state" result.txt
+          if [ "$pr_name" ]; then echo "The PR name is: $pr_name"; else echo "There is no PR for ait-dmirian:${GITHUB_HEAD_REF}" && exit 1;  fi
